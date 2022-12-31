@@ -8,8 +8,9 @@
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="379dp"
-        android:layout_height="241dp"
+        android:layout_width="304dp"
+        android:layout_height="247dp"
+        android:gravity="center|center_horizontal|center_vertical"
         android:text="Press Start To Begin."
         android:textSize="48sp"
         app:layout_constraintBottom_toBottomOf="parent"
