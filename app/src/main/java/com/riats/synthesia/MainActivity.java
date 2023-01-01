@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity implements RecognitionListen
             @Override
             public void onClick(View view) {
                 if (staState == 0){
-                    //recognizeMicrophone();
+                    recognizeMicrophone();
                     start.setText("Stop");
                     textView.setText("Start Talking.");
                     staState = 1;
@@ -91,13 +91,15 @@ public class MainActivity extends AppCompatActivity implements RecognitionListen
 
     private void setErrorState(String message) {
         System.out.print(message);
+        textView.setText(message);
     }
 
     private void recognizeMicrophone() {
         if (speechService != null) {
             speechService.stop();
             speechService = null;
-        } else {
+        }
+        else {
             try {
                 Recognizer rec = new Recognizer(model, 16000.0f);
                 speechService = new SpeechService(rec, 16000.0f);
