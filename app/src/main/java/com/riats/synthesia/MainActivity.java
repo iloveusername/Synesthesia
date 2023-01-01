@@ -117,6 +117,11 @@ public class MainActivity extends AppCompatActivity implements RecognitionListen
         hypothesis = hypothesis.replace(":","");
         hypothesis = hypothesis.replace("\"partial\"","");
         hypothesis = hypothesis.replace("\"","");
+        hypothesis = hypothesis.replace("\n","");
+
+        if (hypothesis.length() > 50){
+            hypothesis = hypothesis.substring(hypothesis.length() - 50);
+        }
 
         textView.setText(hypothesis);
     }

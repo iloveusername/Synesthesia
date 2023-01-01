@@ -8,9 +8,9 @@
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="369dp"
-        android:layout_height="275dp"
-        android:gravity="center_horizontal"
+        android:layout_width="319dp"
+        android:layout_height="278dp"
+        android:gravity="center"
         android:text="Press Start To Begin."
         android:textColor="@color/white"
         android:textColorHint="@color/white"
