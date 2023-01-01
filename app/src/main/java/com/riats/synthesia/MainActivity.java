@@ -37,7 +37,6 @@ public class MainActivity extends AppCompatActivity implements RecognitionListen
         Button start = findViewById(R.id.start);
         Button reflect = findViewById(R.id.reflect);
 
-
         int permissionCheck = ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.RECORD_AUDIO);
         if (permissionCheck != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.RECORD_AUDIO}, PERMISSIONS_REQUEST_RECORD_AUDIO);
