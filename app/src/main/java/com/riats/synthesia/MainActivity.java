@@ -5,6 +5,7 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.View;
@@ -36,6 +37,7 @@ public class MainActivity extends AppCompatActivity implements RecognitionListen
         textView = findViewById(R.id.textView);
         Button start = findViewById(R.id.start);
         Button reflect = findViewById(R.id.reflect);
+        Button info = findViewById(R.id.info);
 
         int permissionCheck = ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.RECORD_AUDIO);
         if (permissionCheck != PackageManager.PERMISSION_GRANTED) {
@@ -84,6 +86,14 @@ public class MainActivity extends AppCompatActivity implements RecognitionListen
                 }
             }
         });
+
+        info.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+//                MainActivity.super.finish();
+                goToSettings();
+            }
+        });
     }
 
     private void initModel() {
@@ -113,6 +123,11 @@ public class MainActivity extends AppCompatActivity implements RecognitionListen
                 setErrorState(e.getMessage());
             }
         }
+    }
+
+    public void goToSettings(){
+        Intent intent = new Intent(this, Information.class);
+        startActivity(intent);
     }
 
     @Override
