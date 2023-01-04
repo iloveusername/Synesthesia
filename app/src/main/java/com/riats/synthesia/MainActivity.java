@@ -55,6 +55,7 @@ public class MainActivity extends AppCompatActivity implements RecognitionListen
                     staState = 1;
                 }
                 else{
+                    recognizeMicrophone();
                     start.setText("Start");
                     textView.setText("Press Start To Begin.");
                     staState =0;
