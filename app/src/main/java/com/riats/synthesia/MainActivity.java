@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity implements RecognitionListen
                 if (staState == 0){
                     recognizeMicrophone();
                     start.setText("Stop");
-                    textView.setText("Start Talking.");
+//                    textView.setText("Start Talking.");
                     staState = 1;
                 }
                 else{
@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity implements RecognitionListen
                         speechService = null;
                     }
                     start.setText("Start");
-                    textView.setText("Press Start To Begin.");
+//                    textView.setText("Press Start To Begin.");
                     staState = 0;
                 }
 
