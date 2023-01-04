@@ -55,10 +55,13 @@ public class MainActivity extends AppCompatActivity implements RecognitionListen
                     staState = 1;
                 }
                 else{
-                    recognizeMicrophone();
+                    if (speechService != null) {
+                        speechService.stop();
+                        speechService = null;
+                    }
                     start.setText("Start");
                     textView.setText("Press Start To Begin.");
-                    staState =0;
+                    staState = 0;
                 }
 
             }
@@ -68,11 +71,13 @@ public class MainActivity extends AppCompatActivity implements RecognitionListen
             @Override
             public void onClick(View view) {
                 if (refState == 0){
+                    reflect.setText("HUD Mode");
                     textView.setRotation(90);
                     textView.setRotationY(180);
                     refState = 1;
                 }
                 else{
+                    reflect.setText("Basic Mode");
                     textView.setRotation(0);
                     textView.setRotationY(0);
                     refState = 0;
@@ -114,7 +119,7 @@ public class MainActivity extends AppCompatActivity implements RecognitionListen
     public void onPartialResult(String hypothesis) {
         hypothesis = hypothesis.replace("{","");
         hypothesis = hypothesis.replace("}","");
-        hypothesis = hypothesis.replace(":","");
+        hypothesis = hypothesis.replace(" : ","");
         hypothesis = hypothesis.replace("\"partial\"","");
         hypothesis = hypothesis.replace("\"","");
         hypothesis = hypothesis.replace("\n","");
