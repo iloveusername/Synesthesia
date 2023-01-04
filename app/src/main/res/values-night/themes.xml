@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.Synthesia" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+    <style name="Theme.Synthesia" parent="Theme.MaterialComponents.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/nice_purp</item>
         <item name="colorPrimaryVariant">@color/nice_purp</item>
