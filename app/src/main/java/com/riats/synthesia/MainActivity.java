@@ -50,15 +50,12 @@ public class MainActivity extends AppCompatActivity implements RecognitionListen
             initModel();
         }
 
-
-
         start.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (staState == 0){
                     recognizeMicrophone();
                     start.setText("Stop");
-//                    textView.setText("Start Talking.");
                     staState = 1;
                 }
                 else{
@@ -67,7 +64,6 @@ public class MainActivity extends AppCompatActivity implements RecognitionListen
                         speechService = null;
                     }
                     start.setText("Start");
-//                    textView.setText("Press Start To Begin.");
                     staState = 0;
                 }
 
@@ -79,12 +75,18 @@ public class MainActivity extends AppCompatActivity implements RecognitionListen
             public void onClick(View view) {
                 if (refState == 0){
                     reflect.setText("HUD Mode");
+                    reflect.setAlpha(0.2F);
+                    start.setAlpha(0.2F);
+                    info.setAlpha(0.2F);
                     textView.setRotation(90);
                     textView.setRotationY(180);
                     refState = 1;
                 }
                 else{
                     reflect.setText("Basic Mode");
+                    reflect.setAlpha(1F);
+                    start.setAlpha(1F);
+                    info.setAlpha(1F);
                     textView.setRotation(0);
                     textView.setRotationY(0);
                     refState = 0;
