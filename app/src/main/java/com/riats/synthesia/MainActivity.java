@@ -23,6 +23,7 @@ import java.io.IOException;
 
 public class MainActivity extends AppCompatActivity implements RecognitionListener {
     private static final int PERMISSIONS_REQUEST_RECORD_AUDIO = 1;
+    boolean ready = false;
     int staState = 0;
     int refState = 0;
     private Model model;
@@ -50,7 +51,7 @@ public class MainActivity extends AppCompatActivity implements RecognitionListen
         start.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (staState == 0){
+                if (staState == 0 && ready == true){
                     recognizeMicrophone();
                     start.setText("Stop");
                     staState = 1;
@@ -104,6 +105,7 @@ public class MainActivity extends AppCompatActivity implements RecognitionListen
         StorageService.unpack(this, "model-en-us", "model",
                 (model) -> {
                     this.model = model;
+                    ready = true;
                 },
                 (exception) -> setErrorState("Failed to unpack the model" + exception.getMessage()));
     }
