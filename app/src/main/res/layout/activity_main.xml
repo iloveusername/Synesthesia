@@ -11,7 +11,7 @@
         android:layout_width="319dp"
         android:layout_height="278dp"
         android:gravity="center"
-        android:text="Press Start To Begin."
+        android:text="Initializing..."
         android:textColor="@color/white"
         android:textColorHint="@color/white"
         android:textSize="48sp"

@@ -101,10 +101,12 @@ public class MainActivity extends AppCompatActivity implements RecognitionListen
         });
     }
 
-    private void initModel() {
+    public void initModel() {
         StorageService.unpack(this, "model-en-us", "model",
                 (model) -> {
                     this.model = model;
+                    textView = findViewById(R.id.textView);
+                    textView.setText("Press Start To Begin.");
                     ready = true;
                 },
                 (exception) -> setErrorState("Failed to unpack the model" + exception.getMessage()));
