@@ -8,6 +8,7 @@ import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -23,6 +24,7 @@ import java.io.IOException;
 
 public class MainActivity extends AppCompatActivity implements RecognitionListener {
     private static final int PERMISSIONS_REQUEST_RECORD_AUDIO = 1;
+    private Handler taskHandler = new android.os.Handler();
     boolean ready = false;
     int staState = 0;
     int refState = 0;
@@ -43,6 +45,7 @@ public class MainActivity extends AppCompatActivity implements RecognitionListen
         int permissionCheck = ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.RECORD_AUDIO);
         if (permissionCheck != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.RECORD_AUDIO}, PERMISSIONS_REQUEST_RECORD_AUDIO);
+            startHandler();
         }
         else {
             initModel();
@@ -99,6 +102,28 @@ public class MainActivity extends AppCompatActivity implements RecognitionListen
                 goToSettings();
             }
         });
+    }
+
+    private Runnable checkPerms = new Runnable() {
+        @Override
+        public void run() {
+            int permissionCheck = ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.RECORD_AUDIO);
+            if (permissionCheck == PackageManager.PERMISSION_GRANTED) {
+                initModel();
+                stopHandler();
+            }
+            else{
+                startHandler();
+            }
+        }
+    };
+
+    void startHandler(){
+        taskHandler.postDelayed(checkPerms, 250);
+    }
+
+    void stopHandler(){
+        taskHandler.removeCallbacks(checkPerms);
     }
 
     public void initModel() {
